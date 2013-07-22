@@ -27,6 +27,7 @@ Bundle 'kien/ctrlp.vim'
 " Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'Yggdroot/indentLine.git'
 Bundle 'scrooloose/nerdtree.git'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'briancollins/vim-jst'
 "
 " Bundle 'taglist.vim'
@@ -174,6 +175,22 @@ nmap pt  :tabp<CR>
 nmap qq :q<CR>
 nmap ss :w<CR>
 nmap qw :q!<CR>
+
+
+" Vimtabs (thanks @nmeans)
+map ,<Right> <ESC>:tabnext<CR>
+map ,<Left> <ESC>:tabprev<CR>
+map <C-t> <ESC>:tabnew<CR>
+map ,1 <ESC>:tabnext 1<CR>
+map ,2 <ESC>:tabnext 2<CR>
+map ,3 <ESC>:tabnext 3<CR>
+map ,4 <ESC>:tabnext 4<CR>
+map ,5 <ESC>:tabnext 5<CR>
+map ,6 <ESC>:tabnext 6<CR>
+map ,7 <ESC>:tabnext 7<CR>
+map ,8 <ESC>:tabnext 8<CR>
+map ,9 <ESC>:tabnext 9<CR>
+
 
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
