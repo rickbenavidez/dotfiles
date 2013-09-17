@@ -10,12 +10,16 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" http://tilvim.com/2013/05/20/vim-and-rbenv.html
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
 " Bundles Here
 Bundle 'tpope/vim-fugitive'
 Bundle 'rails.vim'
+Bundle 'tpope/vim-bundler'
 Bundle 'ack.vim'
 Bundle 'delimitMate.vim'
 Bundle 'ragtag.vim'
@@ -29,10 +33,19 @@ Bundle 'Yggdroot/indentLine.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'briancollins/vim-jst'
+
+" Important if you're using zsh since
+" you need paths to work properly for vim-rspec
+" https://coderwall.com/p/w7fnxa
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-rbenv'
+
 "
 " Bundle 'taglist.vim'
 " Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-coffee-script'
+
+Bundle 'bling/vim-airline'
 
 " Allow mouse events to flow through to vim from the terminal
 set mouse=a
@@ -57,10 +70,16 @@ nmap <leader>ea :CtrlP app<cr>
 nmap <leader>em :CtrlP app/models<cr>
 nmap <leader>ev :CtrlP app/views<cr>
 
+" Rspec.vim mappings
+map <Leader>f :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " Enable indent_guides
 hi Conceal guifg=lightgray guibg=NONE
 hi Conceal ctermfg=gray ctermbg=NONE
-let g:indentLine_char = '┆'
+" let g:indentLine_char = '┆'
 let g:indentLine_color_term = 239
 " let g:indent_guides_auto_colors = 0 
 " let g:indent_guides_enable_on_vim_startup = 1
@@ -85,10 +104,17 @@ set expandtab
 set shiftwidth=2
 set autoindent
 
+" Don't let go of visual selection
+" automatically after shifting indentation
+" http://vim.wikia.com/wiki/Shifting_blocks_visually
+vnoremap > >gv
+vnoremap < <gv
+
 " Store a crapton of history
 set history=1000
 
 " Turn on highlighted search and syntax highlighting
+syntax enable
 set hlsearch
 set incsearch
 
@@ -104,6 +130,7 @@ set noerrorbells  " No noise.
 set background=dark
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
+let g:solarized_termtrans = 1
 
 colorscheme vibrantink
 "set guifont=Monaco:h9
@@ -141,18 +168,17 @@ set lazyredraw " to avoid scrolling problems"
 
 " Tabs
 " ctrl-t makes a new tab
-noremap <C-t> <Esc>:tabnew<CR>
+" noremap <C-t> <Esc>:tabnew<CR>
 
 " shift T turns a split window into it's own tab
 noremap <S-T> <Esc><C-w>T
 
 " ctrl h and l moves left and right between tabs
-noremap <C-h> <Esc>gT<CR>
+noremap <C-h> <Esc>rr<CR>
 noremap <C-l> <Esc>gt<CR>
 
 " Remap escape to 'jj'
 inoremap jj <ESC>
-
 
 " Map NERDTreeToggle to convenient key
 nmap <leader>n :NERDTreeToggle<cr>
@@ -180,7 +206,7 @@ nmap qw :q!<CR>
 " Vimtabs (thanks @nmeans)
 map ,<Right> <ESC>:tabnext<CR>
 map ,<Left> <ESC>:tabprev<CR>
-map <C-t> <ESC>:tabnew<CR>
+" map <C-t> <ESC>:tabnew<CR>
 map ,1 <ESC>:tabnext 1<CR>
 map ,2 <ESC>:tabnext 2<CR>
 map ,3 <ESC>:tabnext 3<CR>
@@ -190,7 +216,7 @@ map ,6 <ESC>:tabnext 6<CR>
 map ,7 <ESC>:tabnext 7<CR>
 map ,8 <ESC>:tabnext 8<CR>
 map ,9 <ESC>:tabnext 9<CR>
-
+map ,t <ESC>:tabnew<CR>
 
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
@@ -219,5 +245,13 @@ augroup filetype
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 augroup END
 
-" autocmd VimEnter * NERDTree
-" autocmd BufEnter * NERDTreeMirror
+" Resize vim splits automatically
+autocmd VimResized * wincmd =
+
+" http://robots.thoughtbot.com/post/48275867281/vim-splits-move-faster-and-more-naturally
+set splitbelow
+set splitright
+
+"http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
+"OMG after all these years creating a new empty such *facepalm*
+nnoremap <CR> :noh<CR><CR>
