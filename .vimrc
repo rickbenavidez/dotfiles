@@ -1,8 +1,3 @@
-" runtime! autoload/pathogen.vim
-" if exists('g:loaded_pathogen')
-"   call pathogen#runtime_prepend_subdirectories(expand('~/.vimbundles'))
-" end
-
 set nocompatible          " We're running Vim, not Vi!
 filetype off
 "filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -17,17 +12,13 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 Bundle 'gmarik/vundle'
 
 " Bundles Here
-Bundle 'tComment'
-Bundle 'tpope/vim-fugitive'
-Bundle 'rails.vim'
-Bundle 'tpope/vim-bundler'
 Bundle 'ack.vim'
 Bundle 'delimitMate.vim'
 Bundle 'ragtag.vim'
 Bundle 'endwise.vim'
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 
 Bundle 'surround.vim'
@@ -38,18 +29,23 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'briancollins/vim-jst'
 Bundle 'bronson/vim-trailing-whitespace'
 
+" tpope is the man
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-rbenv'
+
 " Important if you're using zsh since
 " you need paths to work properly for vim-rspec
 " https://coderwall.com/p/w7fnxa
-Bundle 'tpope/vim-dispatch'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-rbenv'
 
 "
 " Bundle 'taglist.vim'
 " Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'vim-coffee-script'
-
 Bundle 'bling/vim-airline'
 
 let g:airline_powerline_fonts = 1
@@ -61,7 +57,7 @@ set mouse=a
 let g:NERDTreeWinSize=40
 let NERDTreeShowHidden=1
 let NERDTreeChDirMode=0 
-
+let NERDTreeDirArrows=1
 " Set up our taglist
 " let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
@@ -262,3 +258,6 @@ set splitright
 "http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting
 "OMG after all these years creating a new empty such *facepalm*
 nnoremap <CR> :noh<CR><CR>
+
+scriptencoding utf-8
+set encoding=utf-8
