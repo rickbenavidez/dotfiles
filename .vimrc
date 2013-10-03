@@ -17,6 +17,7 @@ let g:ruby_path = system('echo $HOME/.rbenv/shims')
 Bundle 'gmarik/vundle'
 
 " Bundles Here
+Bundle 'tComment'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rails.vim'
 Bundle 'tpope/vim-bundler'
@@ -24,19 +25,23 @@ Bundle 'ack.vim'
 Bundle 'delimitMate.vim'
 Bundle 'ragtag.vim'
 Bundle 'endwise.vim'
-Bundle 'snipMate.vim'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle 'garbas/vim-snipmate'
+
 Bundle 'surround.vim'
-" Bundle 'vim-peepopen'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'nathanaelkane/vim-indent-guides.git'
 Bundle 'Yggdroot/indentLine.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'briancollins/vim-jst'
+Bundle 'bronson/vim-trailing-whitespace'
 
 " Important if you're using zsh since
 " you need paths to work properly for vim-rspec
 " https://coderwall.com/p/w7fnxa
+Bundle 'tpope/vim-dispatch'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-rbenv'
 
@@ -46,6 +51,8 @@ Bundle 'tpope/vim-rbenv'
 Bundle 'vim-coffee-script'
 
 Bundle 'bling/vim-airline'
+
+let g:airline_powerline_fonts = 1
 
 " Allow mouse events to flow through to vim from the terminal
 set mouse=a
