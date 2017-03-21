@@ -1,0 +1,160 @@
+" Map NERDTreeToggle to convenient key
+nmap <leader>n :NERDTreeToggle<cr>
+
+set background=dark
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termtrans = 1
+
+colorscheme vibrantink
+set colorcolumn=120
+
+set nocursorline
+
+" shift T turns a split window into it's own tab
+noremap <S-T> <Esc><C-w>T
+
+" ctrl h and l moves left and right between tabs
+noremap <C-h> <Esc>rr<CR>
+noremap <C-l> <Esc>gt<CR>
+
+" Remap escape to 'jj'
+inoremap jj <ESC>
+
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+
+" Map NERDTreeToggle to convenient key
+nmap <leader>n :NERDTreeToggle<cr>
+let NERDTreeQuitOnOpen=0
+"••
+"  " NERDTree config
+let g:NERDTreeChDirMode=1
+let NERDTreeChDirMode=1
+let NERDTreeIgnore=['\env','\.vim$', '\~$', '\.pyc$', '\.swp$', '\.egg-info$', '^dist$', '^build$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\~$']
+" let NERDTreeShowBookmarks=1
+" let NERDTreeHightlightCursorline=1
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+nmap ww <C-w><C-w>
+
+nmap tt :tabn<CR>
+nmap pt  :tabp<CR>
+
+nmap qq :q<CR>
+nmap ss :w<CR>
+nmap qw :q!<CR>
+
+
+" Vimtabs (thanks @nmeans)
+map ,<Right> <ESC>:tabnext<CR>
+map ,<Left> <ESC>:tabprev<CR>
+" map <C-t> <ESC>:tabnew<CR>
+map ,1 <ESC>:tabnext 1<CR>
+map ,2 <ESC>:tabnext 2<CR>
+map ,3 <ESC>:tabnext 3<CR>
+map ,4 <ESC>:tabnext 4<CR>
+map ,5 <ESC>:tabnext 5<CR>
+map ,6 <ESC>:tabnext 6<CR>
+map ,7 <ESC>:tabnext 7<CR>
+map ,8 <ESC>:tabnext 8<CR>
+map ,9 <ESC>:tabnext 9<CR>
+map ,t <ESC>:tabnew<CR>
+
+let g:ctrlp_working_path_mode = 0
+nmap <leader>t :CtrlP<cr>
+"RoR CtrlP stuff
+nmap <leader>ec :CtrlP app/controllers<cr>
+nmap <leader>ea :CtrlP app<cr>
+nmap <leader>em :CtrlP app/models<cr>
+nmap <leader>ev :CtrlP app/views<cr>
+
+" Rspec.vim mappings
+map <Leader>f :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+
+" indent
+ let g:indent_guides_auto_colors=0
+"   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=233
+"   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=234
+
+set nospell
+let g:airline#extensions#tabline#enabled = 0
+let g:spf13_no_wrapRelMotion = 1
+let g:spf13_keep_trailing_whitespace = 1
+
+" 2 space indent all the things
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+set smartindent
+
+augroup filetype
+  au!
+  au! BufRead,BufNewFile *.module set filetype=php
+  au BufRead,BufNewFile *.engine set filetype=php
+  au BufRead,BufNewFile *.inc set filetype=php
+  au BufRead,BufNewFile *.tmpl set filetype=php
+  au BufRead,BufNewFile *.mxml set filetype=xml
+  au BufRead,BufNewFile *.htm set filetype=html
+  au BufRead,BufNewFile *.html set filetype=html
+  au BufRead,BufNewFile *.xhtm set filetype=html
+  au BufRead,BufNewFile *.xhtml set filetype=html
+  au BufRead,BufNewFile *.php3 set filetype=php
+  au BufRead,BufNewFile *.php4 set filetype=php
+  au BufRead,BufNewFile *.less set filetype=less
+  au BufRead,BufNewFile *.less.erb set filetype=less
+
+  au BufRead,BufNewFile *.ejs set filetype=html
+  au BufRead *.rhtml set filetype=eruby
+  au BufRead *.erb set filetype=eruby
+  autocmd FileType ruby,eruby,yaml set autoindent shiftwidth=2 softtabstop=2 expandtab
+augroup END
+
+filetype indent on
+filetype plugin indent on
+
+set re=1
+set lazyredraw
+
+set nofoldenable                " disable code folding
+
+
+"if exists("g:ctrl_user_command")
+  unlet g:ctrlp_user_command
+"endif
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" --- backup and swap files ---
+" I save all the time, those are annoying and unnecessary...
+set nobackup
+set nowritebackup
+set noswapfile
+set clipboard=unnamed
+
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|vendor\|data\|log\|tmp$',
+"   \ 'file': '\.exe$\|\.so$\|\.dat$'
+"   \ }
