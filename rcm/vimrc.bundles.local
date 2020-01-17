@@ -1,0 +1,4 @@
+Plug 'scrooloose/nerdtree'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
