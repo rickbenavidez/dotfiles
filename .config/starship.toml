@@ -7,8 +7,6 @@ $time\
 $directory\
 [](fg:#3B76F0 bg:#FCF392)\
 $git_branch\
-$git_status\
-$git_metrics\
 [](fg:#FCF392 bg:#030B16)\
 $character\
 """
@@ -46,6 +44,26 @@ error_symbol = '[ ✗](#E84D44) '
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+time_format = "%R"
+style = "bg:#1C3A5E fg:#8DFBD2"
+format = '[ 󱑍 $time ]($style)'
+
+[nodejs]
+# Setting this will hide the "via" text
+label = ""
+# You can change the symbol
+symbol = "⬢ "
+# You can change the format
+format = "via [⬢ \\($version\\)]($style) "
+# You can change the color
+style = "bold green"
+
+[ruby]
+# Setting this will hide the "via" text
+label = ""
+# You can change the symbol
+symbol = "💎 "
+# You can change the format
+format = "via [$symbol\\($version\\)]($style) "
+# You can change the color
+style = "bold red"
