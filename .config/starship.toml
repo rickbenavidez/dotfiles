@@ -1,6 +1,6 @@
 format = """\
 [](bg:#030B16 fg:#7DF9AA)\
-[󰀵 ](bg:#7DF9AA fg:#090c0c)\
+$os\
 [](fg:#7DF9AA bg:#1C3A5E)\
 $hostname\
 $time\
@@ -12,10 +12,14 @@ $git_branch\
 $character\
 """
 
-[hostname]
-ssh_only = false
-format = ' [$hostname](bold purple) '
-trim_at = "."
+right_format = """\
+$nodejs\
+$ruby\
+"""
+
+[os]
+style = "fg:#030B16 bg:#7DF9AA"
+format = '[$symbol ]($style)'
 disabled = false
 
 [directory]
@@ -55,22 +59,78 @@ time_format = "%R"
 style = "bg:#1C3A5E fg:#8DFBD2"
 format = '[ 󱑍 $time ]($style)'
 
+[hostname]
+ssh_only = false
+style = "bg:#1C3A5E fg:#8DFBD2"
+format = '[ $hostname ]($style)'
+trim_at = "."
+disabled = false
+
 [nodejs]
-# Setting this will hide the "via" text
-label = ""
 # You can change the symbol
 symbol = "⬢ "
 # You can change the format
-format = "via [⬢ \\($version\\)]($style) "
+format = " [⬢  $version]($style) "
 # You can change the color
 style = "bold green"
 
 [ruby]
-# Setting this will hide the "via" text
-label = ""
 # You can change the symbol
 symbol = "💎 "
 # You can change the format
-format = "via [$symbol\\($version\\)]($style) "
+format = " [$symbol $version]($style) "
 # You can change the color
 style = "bold red"
+
+
+#############
+#   Other   #
+#############
+
+[nix_shell]
+symbol = ""
+
+[os.symbols]
+Alpaquita = ""
+Alpine = ""
+AlmaLinux = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "󰛓"
+Gentoo = ""
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Kali = ""
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+RockyLinux = ""
+Redox = "󰀘"
+Solus = "󰠳"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Void = ""
+Windows = "󰍲"
