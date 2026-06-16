@@ -1,0 +1,136 @@
+format = """\
+[](bg:#030B16 fg:#7DF9AA)\
+$os\
+[](fg:#7DF9AA bg:#1C3A5E)\
+$hostname\
+$time\
+[](fg:#1C3A5E bg:#3B76F0)\
+$directory\
+[](fg:#3B76F0 bg:#FCF392)\
+$git_branch\
+[](fg:#FCF392 bg:#030B16)\
+$character\
+"""
+
+right_format = """\
+$nodejs\
+$ruby\
+"""
+
+[os]
+style = "fg:#030B16 bg:#7DF9AA"
+format = '[$symbol ]($style)'
+disabled = false
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:#E4E4E4 bg:#3B76F0"
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#1C3A5E bg:#FCF392"
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#1C3A5E bg:#FCF392"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"
+
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](#E84D44) '
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#1C3A5E fg:#8DFBD2"
+format = '[ 󱑍 $time ]($style)'
+
+[hostname]
+ssh_only = false
+style = "bg:#1C3A5E fg:#8DFBD2"
+format = '[ $hostname ]($style)'
+trim_at = "."
+disabled = false
+
+[nodejs]
+# You can change the symbol
+symbol = "⬢ "
+# You can change the format
+format = " [⬢  $version]($style) "
+# You can change the color
+style = "bold green"
+
+[ruby]
+# You can change the symbol
+symbol = "💎 "
+# You can change the format
+format = " [$symbol $version]($style) "
+# You can change the color
+style = "bold red"
+
+
+#############
+#   Other   #
+#############
+
+[nix_shell]
+symbol = ""
+
+[os.symbols]
+Alpaquita = ""
+Alpine = ""
+AlmaLinux = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "󰛓"
+Gentoo = ""
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Kali = ""
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+RockyLinux = ""
+Redox = "󰀘"
+Solus = "󰠳"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Void = ""
+Windows = "󰍲"
