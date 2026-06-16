@@ -1,3 +1,5 @@
+# Install the bash from homebrew to make color/theme work.
+
 set -g default-terminal "tmux-256color"
 set -ag terminal-overrides ",xterm-256color:RGB"
 
