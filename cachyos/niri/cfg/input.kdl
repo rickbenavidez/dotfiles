@@ -1,0 +1,37 @@
+// ────────────── Input Configuration ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            //If you want to overwrite your keyboard layout,
+            // uncomment the line below and change the layout accordingly.
+            //layout "us" // Use the American keyboard layout
+
+            // Swap Alt and Super: puts Super where macOS Cmd sits (next to
+            // space), and Alt where Option sat (the old Windows key).
+            options "altwin:swap_alt_win"
+        }
+        numlock // Enable numlock on startup
+    }
+
+    touchpad {
+        tap // Enable tap-to-click
+        click-method "clickfinger" // finger count = button, not position on pad
+        dwt   // Disable-While-Typing: ignore the pad while typing and briefly after
+        dwtp  // Disable-While-TrackPointing: ignore the pad while using the nub
+        // disabled-on-external-mouse // uncomment to auto-off when a mouse is plugged in
+        // off // nuclear option: disable the touchpad entirely (TrackPoint still works)
+        // natural-scroll // Enable macOS-style scrolling
+    }
+
+    mouse {
+        // If you want to disable Mouse Acceleration,
+        // uncomment the lines below.
+        //accel-profile "flat"
+        //accel-speed 0.0
+    }
+
+    focus-follows-mouse max-scroll-amount="0%" // only follow when it would not scroll the view
+    workspace-auto-back-and-forth // Enable workspace back & forth switching
+}
